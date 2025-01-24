@@ -6,8 +6,7 @@ import telegram
 import telegram.ext
 import asyncio
 
-import commands
-import commands.start
+from api.commands.start import start as cmd_start
 
 load_dotenv()
 app = FastAPI()
@@ -22,7 +21,7 @@ async def main() -> None:
         .build()
     
     # Register handlers
-    application.add_handler(telegram.ext.CommandHandler('start', commands.start.start))
+    application.add_handler(telegram.ext.CommandHandler('start', cmd_start))
 
     # Start the API
     api = FastAPI()
