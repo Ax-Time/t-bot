@@ -17,7 +17,7 @@ def index():
     return {"message": "Hello World"}
 
 async def main() -> None:
-    application = telegram.ext.Application().builder() \
+    application = telegram.ext.Application.builder() \
         .token(os.environ.get('TOKEN')) \
         .build()
     
