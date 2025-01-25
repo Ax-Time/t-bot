@@ -12,7 +12,7 @@ bot = Bot(os.environ.get("TOKEN"))
 async def read_root():
     return {"message": "Hello, World!"}
 
-@app.get("/updates")
+@app.post("/updates")
 async def handle_update(update: dict):
-    update = Update.de_json(update, bot)
-    return {"update": update}
+    update: Update = Update.de_json(update, bot)
+    print({"update": update.to_json()})
