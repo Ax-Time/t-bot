@@ -1,15 +1,11 @@
-import logging
-import dotenv
-import os
-from fastapi import FastAPI, Request
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-
-# Load environment variables
-dotenv.load_dotenv()
+from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get('/')
-async def root():
-    return {'message': 'Hello, World!'}
+@app.get("/")
+async def read_root():
+    return {"message": "Hello, World!"}
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
